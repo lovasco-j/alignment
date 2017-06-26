@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.alignment__container {
+    position: relative;
+    display: flex;width: 400px;
+    height: 400px;
+    margin: 100px;
+    width: 400px;
+    height: 400px;
+    margin: 100px;
+    justify-content: center;
+    vertical-align: center;
+}
+
+.alignment__controls {
+    display: flex;
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    align-self: center;
+}
+
+.alignment__controls button {
+    padding: 4px 10px;
+    width: 75px;
+}
+
+.alignment__controls--vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+    background: rgba( 173,216,230, .6 );
+    z-index: 1;
+    margin: 0 auto;
+}
+
+.alignment__controls--vertical button {
+    align-self: center;
+}
+
+.alignment__controls--horizontal {
+    display: flex;
+    position: absolute;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    top: 50%;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.alignment__controls--horizontal button:first-of-type {
+    transform: rotate(-90deg);
+}
+
+.alignment__controls--horizontal button:last-of-type {
+    transform: rotate(90deg);
+}
+
+.alignment__image-container {
+    display: flex;
+}
+
+.alignment__image-container img {
+    width: 500px;
+}

@@ -1,34 +1,65 @@
-import {removePosition, addPosition} from './positioning';
+import {removePosition, addPosition, toggleOppositePosition} from './positioning';
 
-describe('Should remove position and not mutate state', () => {
-    const beforeState = {position: ['top', 'left']};
+describe.skip('Should remove position and not mutate state', () => {
+    // Arrange
+    const beforeState = ['top', 'left'];
+    const positionToRemove = 'top';
+    const afterState = ['left'];
 
-    const action = removePosition(beforeState, 'top');
-
-    const afterState = {position: ['left']};
+    // Act
+    const result = removePosition(beforeState, 'top');
 
     test('Should remove position', () => {
-        expect(action).toEqual(afterState);
+        // Assert
+        expect(result).toEqual(afterState);
     });
 
     test('removePosition should not mutate state', () => {
-        expect(action).not.toBe(afterState);
+        // Assert
+        expect(result).not.toBe(beforeState);
     });
 });
 
-describe('Should add position and not mutate state', () => {
-    const beforeState = {position: ['top']};
+describe.skip('Should add position and not mutate state', () => {
+    // Arrange
+    const beforeState = ['top'];
+    const positionToAdd = 'left';
+    const afterState = ['top', 'left'];
 
-    const action = addPosition(beforeState, 'left');
-
-    const afterState = {position: ['top','left']};
+    // Act
+    const result = addPosition( beforeState, positionToAdd );
 
     test('Should add position', () => {
-        expect(action).toEqual(afterState);
+        // Assert
+        expect(result).toEqual(afterState);
     });
 
     test('addPosition should not mutate state', () => {
-        expect(action).not.toBe(afterState);
+      // Assert
+        expect(result).not.toBe(beforeState);
     });
 });
 
+describe.skip( 'toggleOppositePosition should only remove a position\'s counter part if it is avaliable', () => {
+
+  // Arrange
+  const beforeState = ['top', 'bottom', 'right'];
+  const positionToToggleFrom = 'top';
+  const afterState = ['top', 'right'];
+
+  // Act
+  const result = toggleOppositePosition( beforeState, positionToToggleFrom );
+
+  test( 'Should only remove position\'s counter part', () => {
+    // Assert
+    expect(result).toEqual(afterState);
+  } );
+
+  test( 'Should not remove any position other then it\'s counter part', () => {
+    // Assert
+    expect(result).not.toEqual(['top', 'bottom']);
+    expect(result).not.toEqual(['top']);
+    expect(result).not.toEqual(['bottom']);
+  } );
+
+});

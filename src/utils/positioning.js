@@ -1,12 +1,12 @@
 import {TOP, BOTTOM, RIGHT, LEFT } from './constants';
 
 export const removePosition = (positions, positionToRemove) => {
-    return positions.filter(p => p !== positionToRemove)
-}
+    return positions.filter(p => p !== positionToRemove);
+};
 
 export const addPosition = (positions, positionToAdd) => {
     return [ ...positions, positionToAdd ];
-}
+};
 
 export const toggleOppositePosition = (positions, currentPosition) => {
     const oppositePosition = getOppositePosition(currentPosition);
@@ -14,7 +14,7 @@ export const toggleOppositePosition = (positions, currentPosition) => {
         return removePosition( positions, oppositePosition );
     }
     return positions;
-}
+};
 
 export const getOppositePosition = ( currentPosition ) => {
     switch (currentPosition) {
@@ -23,4 +23,4 @@ export const getOppositePosition = ( currentPosition ) => {
         case RIGHT:  return LEFT;
         case LEFT:   return RIGHT;
     }
-}
+};

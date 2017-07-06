@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {removePosition, addPosition, toggleOppositePosition} from './utils/positioning';
-import {AlignButton} from './components/position/AlignButton';
-import {TOP, BOTTOM, RIGHT, LEFT} from './utils/constants';
+import {AlignmentController} from './components/alignment/AlignmentController';
+
 import img from './assets/images/img.jpg';
 import './assets/styles/app.css';
 
 class ImageAlign extends Component {
     state = {
-        positions: ['center']
+        positions: ['center'],
+        styles: {justifyContent: 'center', alignItems: 'center'},
     }
 
     setPositionState = (positions) => {
@@ -17,13 +18,13 @@ class ImageAlign extends Component {
     removePositionFromState = (currentPosition) => {
         const positions = removePosition(this.state.positions, currentPosition);
         this.setPositionState(positions);
-    }
+    };
 
     addPositionToState = (currentPosition) => {
         const toggledPositions = toggleOppositePosition(this.state.positions, currentPosition);
         const positions = addPosition(toggledPositions, currentPosition);
         this.setPositionState(positions);
-    }
+    };
 
     alignButtonClickHandler = (currentPosition) => {
         if (this.state.positions.indexOf(currentPosition) !== -1) {
@@ -31,50 +32,23 @@ class ImageAlign extends Component {
         } else {
             this.addPositionToState(currentPosition);
         }
-    }
+    };
 
     render() {
-        let posStyle;
-        const positionValue = this.state.positions;
-
-        if ('center' === positionValue) {
-            posStyle = {justifyContent: 'center', alignItems: 'center'};
-        }
-
         return (
             <div className="alignment">
                 <div className="alignment__container">
-                    <div className="alignment__controls">
-                        <div className="alignment__controls--vertical">
-                            { [TOP, BOTTOM].map(position =>
-                                <AlignButton
-                                    key={position}
-                                    clickHandler={this.alignButtonClickHandler}
-                                    {...this.state}
-                                    currentPosition={position}
-                                />
-                            ) }
-                        </div>
-                        {/*<div className="alignment__controls--horizontal">*/}
-                        {/*{ [LEFT, RIGHT].map(position =>*/}
-                        {/*<AlignButton*/}
-                        {/*key={position}*/}
-                        {/*clickHandler={this.alignButtonClickHandler}*/}
-                        {/*{...this.state}*/}
-                        {/*currentPosition={position}*/}
-                        {/*/>*/}
-                        {/*) }*/}
-                        {/*</div>*/}
-                    </div>
+                    <AlignmentController
+                      positions={this.state.positions}
+                      clickHandler={this.alignButtonClickHandler}
+                    />
 
-                    <div className="alignment__image-container"
-                         style={posStyle}>
+                    <div className="alignment__image-btn alignment__image-container"
+                         style={this.state.styles}>
                         <img className="image-to-align" src={img}/>
                     </div>
 
-
                 </div>
-
             </div>
         )
     }

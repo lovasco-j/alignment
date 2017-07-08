@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {removePosition, addPosition, toggleOppositePosition} from './utils/positioning';
 import {AlignmentController} from './components/alignment/AlignmentController';
+import {CssSnippet} from './components/CssSnippet';
 
 import img from './assets/images/img.jpg';
 import './assets/styles/app.css';
@@ -8,7 +9,7 @@ import './assets/styles/app.css';
 class ImageAlign extends Component {
     state = {
         positions: ['center'],
-        styles: {justifyContent: 'center', alignItems: 'center'},
+        styles: {justifyContent: 'center', alignItems: 'center' },
     }
 
     setPositionState = (positions) => {
@@ -34,8 +35,12 @@ class ImageAlign extends Component {
         }
     };
 
+
+
     render() {
+
         return (
+          <div>
             <div className="alignment">
                 <div className="alignment__container">
                     <AlignmentController
@@ -47,9 +52,12 @@ class ImageAlign extends Component {
                          style={this.state.styles}>
                         <img className="image-to-align" src={img}/>
                     </div>
-
                 </div>
             </div>
+
+            <CssSnippet styles={this.state.styles} />
+
+          </div>
         )
     }
 }

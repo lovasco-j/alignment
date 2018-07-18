@@ -1,15 +1,16 @@
 {
-  "name": "art-walk",
+  "name": "Image Alignment",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^15.5.4",
-    "react-dom": "^15.5.4",
     "spawn-sync": "^1.0.15"
   },
   "devDependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "react-scripts": "0.9.5",
-    "redux": "^3.6.0"
+    "redux": "^4.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

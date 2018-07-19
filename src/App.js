@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {removePosition, addPosition, toggleOppositePosition} from './utils/positioning';
-import {AlignmentController} from './components/alignment/AlignmentController';
-import {CssSnippet} from './components/CssSnippet';
+import {AlignmentController} from './containers/alignment/AlignmentController';
+import {CssSnippet} from './containers/CssSnippet';
 
 import img from './assets/images/img.jpg';
 import './assets/styles/app.css';
